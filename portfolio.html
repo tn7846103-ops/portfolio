@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Nguyễn Trường Sơn | Robotics Portfolio - Kỹ năng số</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f7fb;
+            color: #1a2c3e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header */
+        header {
+            background: white;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e6edf2;
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            gap: 20px;
+        }
+
+        .logo h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1a4d5f;
+            letter-spacing: -0.3px;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            color: #5a6e7c;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c4b5f;
+            transition: 0.2s;
+            font-size: 1rem;
+            padding-bottom: 6px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1e7f6e;
+            border-bottom: 2px solid #1e7f6e;
+        }
+
+        section {
+            padding: 52px 0 60px;
+            border-bottom: 1px solid #e6edf2;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 36px;
+            letter-spacing: -0.3px;
+            border-left: 6px solid #1e7f6e;
+            padding-left: 24px;
+            color: #0f3443;
+        }
+
+        /* card dạng dự án */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s ease;
+            border: 1px solid #e2ecf1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.12);
+            border-color: #cbdde6;
+        }
+
+        .card-header {
+            background: #f8fbfd;
+            padding: 20px 24px 12px 24px;
+            border-bottom: 1px solid #eef3f7;
+        }
+
+        .card-header h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #1a4d5f;
+        }
+
+        .badge {
+            background: #e0f0ea;
+            color: #1e6f5c;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 12px 0 8px;
+        }
+
+        .card-body {
+            padding: 20px 24px 24px;
+            flex: 1;
+        }
+
+        .card-body p {
+            color: #2c4b5f;
+            margin-bottom: 16px;
+        }
+
+        .file-meta {
+            background: #f1f6f9;
+            border-radius: 20px;
+            padding: 12px 16px;
+            margin: 16px 0 8px;
+            font-size: 0.8rem;
+        }
+
+        .btn-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid #c0d6df;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #1e5f6e;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 12px;
+        }
+
+        .btn-project:hover {
+            background: #eef5f7;
+            border-color: #1e7f6e;
+            color: #1e7f6e;
+        }
+
+        /* modal đọc báo cáo dự án */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            max-width: 900px;
+            width: 92%;
+            max-height: 85vh;
+            border-radius: 32px;
+            overflow-y: auto;
+            padding: 28px 32px;
+            position: relative;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px;
+            right: 28px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #7e95a8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 32px 0;
+            color: #5a6e7c;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 720px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                gap: 24px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .infographic-placeholder {
+            background: #eef3f0;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <h1></h1>
+                <p></p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" data-page="intro" class="nav-link active">Giới thiệu</a></li>
+                <li><a href="#" data-page="projects" class="nav-link">Dự án & Bài tập</a></li>
+                <li><a href="#" data-page="summary" class="nav-link">Tổng kết</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- GIỚI THIỆU -->
+    <section id="intro-section">
+        <div class="section-title">📌 Hành trình kỹ thuật số</div>
+        <div style="background: white; border-radius: 32px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: center;">
+                <div style="background: #e0f0ea; width: 90px; height: 90px; border-radius: 60px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-robot fa-3x" style="color: #1e6f5c;"></i>
+                </div>
+                <div style="flex: 1;">
+                    <h2 style="font-size: 1.9rem; font-weight: 700;"></h2>
+                    <p> <strong></strong>
+            </div>
+            <hr style="margin: 24px 0;">
+            <h3><i class="fas fa-bullseye"></i> Mục tiêu học tập & Định hướng</h3>
+            <p></p>
+            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <span class="badge"><i class="fab fa-python"></i> Python/C++</span>
+                <span class="badge"><i class="fas fa-microchip"></i> ESP32/Arduino</span>
+                <span class="badge"><i class="fas fa-brain"></i> Prompt Engineering</span>
+                <span class="badge"><i class="fas fa-shield-alt"></i> Đạo đức AI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANG DỰ ÁN – Mỗi bài tập là một dự án hoàn chỉnh, không chỉ ghi chú -->
+    <section id="projects-section" style="display: none;">
+        <div class="section-title">📁 Các dự án & nhiệm vụ chính</div>
+        <div class="projects-grid">
+            <!-- Dự án 1: Quản lý tệp và thư mục -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-folder-tree"></i> Quản lý tệp & thư mục</h3>
+                    <div class="badge">Bài tập 1 · Máy tính và thiết bị ngoại vi</div>
+                </div>
+                <div class="card-body">
+                    <p>Thực hành tạo, sao chép, di chuyển, đổi tên, xóa và khôi phục tệp trên Windows. Cấu trúc thư mục khoa học, quy tắc đặt tên chuẩn.</p>
+                    <div class="file-meta">
+                        <i class="fas fa-check-circle"></i> Đã hoàn thành: ảnh chụp từng bước + báo cáo phân tích
+                    </div>
+                    <button class="btn-project view-project" data-project="project1"><i class="fas fa-eye"></i> Xem báo cáo dự án</button>
+                </div>
+            </div>
+
+            <!-- Dự án 2: Khai thác dữ liệu & Đánh giá thông tin (Robot công nghiệp) -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-search"></i> Khai thác dữ liệu thông tin</h3>
+                    <div class="badge">Bài tập 2 · Toán tử tìm kiếm nâng cao</div>
+                </div>
+                <div class="card-body">
+                    <p>Sử dụng site:, filetype:, intitle: để tìm tài liệu về robot công nghiệp. Đánh giá độ tin cậy nguồn (IEEE, Springer, Google Scholar).</p>
+                    <div class="file-meta">
+                        📄 Bảng so sánh tác giả & trích dẫn · Phân tích chuyên sâu
+                    </div>
+                    <button class="btn-project view-project" data-project="project2"><i class="fas fa-file-alt"></i> Đọc phân tích dự án</button>
+                </div>
+            </div>
+
+            <!-- Dự án 3: Graphene trong pin lithium-ion (Tổng quan AI) -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-battery-full"></i> Graphene trong pin LIB</h3>
+                    <div class="badge">Bài tập 3 · Tổng quan AI & Vật liệu</div>
+                </div>
+                <div class="card-body">
+                    <p>Nghiên cứu 5 bài báo khoa học: dung lượng ~744 mAh/g, cải thiện an toàn nhiệt (thermal runaway 180–220°C), ứng dụng xe điện.</p>
+                    <div class="file-meta">
+                        🔬 So sánh phương pháp CVD, LIG, anode 3D – số liệu thực nghiệm
+                    </div>
+                    <button class="btn-project view-project" data-project="project3"><i class="fas fa-microchip"></i> Xem báo cáo graphene</button>
+                </div>
+            </div>
+
+            <!-- Dự án 4: Hợp tác trực tuyến – Smart Bin (ESP32) -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-users"></i> Smart Bin · Hợp tác nhóm</h3>
+                    <div class="badge">Bài tập 4 · Giao tiếp & quản lý dự án</div>
+                </div>
+                <div class="card-body">
+                    <p>Thùng rác thông minh dùng ESP32, cảm biến siêu âm và nhận dạng giọng nói. Sử dụng Trello, Google Docs, Drive để phối hợp nhóm.</p>
+                    <div class="file-meta">
+                        📌 Vai trò: lập trình arduino, viết tài liệu kỹ thuật, cập nhật tiến độ
+                    </div>
+                    <button class="btn-project view-project" data-project="project4"><i class="fas fa-trash-alt"></i> Báo cáo dự án Smart Bin</button>
+                </div>
+            </div>
+
+            <!-- Dự án 5: Sáng tạo nội dung số với AI (Tràng An) -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-paintbrush"></i> Sáng tạo nội dung AI</h3>
+                    <div class="badge">Bài tập 5 · Claude + DALL·E + Canva</div>
+                </div>
+                <div class="card-body">
+                    <p>Thiết kế bài thuyết trình 11 slide về Quần thể danh thắng Tràng An, tích hợp hình ảnh AI và layout Canva chuyên nghiệp.</p>
+                    <div class="file-meta">
+                        ✨ Prompt nâng cao: đóng vai giảng viên, tạo ảnh siêu thực, rút ngắn 60% thời gian.
+                    </div>
+                    <button class="btn-project view-project" data-project="project5"><i class="fas fa-mountain"></i> Khám phá sản phẩm AI</button>
+                </div>
+            </div>
+
+            <!-- Dự án 6: AI có trách nhiệm & Liêm chính học thuật -->
+            <div class="project-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-gavel"></i> AI có trách nhiệm</h3>
+                    <div class="badge">Bài tập 6 · Chính sách & Đạo đức</div>
+                </div>
+                <div class="card-body">
+                    <p>Phân tích chính sách AI của ĐHBK Hà Nội (2026) & Viện AI4LIFE. Xây dựng 7 nguyên tắc cá nhân: minh bạch, tư duy phản biện, tôn trọng sở hữu trí tuệ.</p>
+                    <div class="file-meta">
+                        🧠 Infographic + so sánh với ĐHQG TpHCM, ĐH FPT
+                    </div>
+                    <button class="btn-project view-project" data-project="project6"><i class="fas fa-scale-balanced"></i> Xem bộ nguyên tắc</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TỔNG KẾT -->
+    <section id="summary-section" style="display: none;">
+        <div class="section-title">🌱 Nhìn lại chặng đường</div>
+        <div style="background: white; border-radius: 32px; padding: 34px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <h3><i class="fas fa-chalkboard-user"></i> Trải nghiệm & bài học từ các dự án</h3>
+            <p>Quá trình xây dựng portfolio này giúp em hệ thống 6 dự án thực tế. Từ việc quản lý tệp tin cơ bản cho đến phân tích chính sách AI có trách nhiệm, mỗi dự án đều mang đến kỹ năng mới:</p>
+            <ul style="margin: 20px 0 20px 28px;">
+                <li>✔️ Tổ chức thư mục khoa học, đặt tên file chuẩn – nền tảng làm việc chuyên nghiệp.</li>
+                <li>✔️ Thành thạo tìm kiếm học thuật với toán tử nâng cao, đánh giá nguồn tin cậy.</li>
+                <li>✔️ Áp dụng prompt engineering (role, context, ràng buộc) để viết báo cáo graphene và nội dung Tràng An.</li>
+                <li>✔️ Quản lý dự án nhóm qua Trello, đồng bộ tiến độ và xử lý lỗi kỹ thuật ESP32.</li>
+                <li>✔️ Xây dựng bộ nguyên tắc sử dụng AI minh bạch – phản biện và trung thực.</li>
+            </ul>
+            <p><strong>💡 Điều tâm đắc nhất:</strong> Dự án Graphene và AI có trách nhiệm đã thay đổi cách em nhìn nhận AI: không chỉ là công cụ, mà còn đặt ra trách nhiệm đạo đức. Việc so sánh chính sách giữa các trường đại học giúp em hiểu sâu về văn hóa liêm chính.</p>
+            <p>⚠️ <strong>Thách thức:</strong> Khi làm dự án Smart Bin, nhóm gặp lỗi kết nối phần cứng, nhưng nhờ cập nhật liên tục trên Trello và thử nghiệm nhiều lần, chúng em đã fix được lỗi. Điều đó rèn luyện sự kiên trì và kỹ năng giải quyết vấn đề.</p>
+            <div class="infographic-placeholder">
+                <i class="fas fa-chart-simple fa-2x" style="color:#1e6f5c;"></i>
+                <p style="margin-top: 8px;"><strong>Tóm tắt kỹ năng đạt được:</strong> Quản trị dữ liệu | Tìm kiếm & đánh giá | Prompt engineering | Hợp tác số | Sáng tạo AI có đạo đức.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p><i class="far fa-copyright"></i> </p>
+        <p>Portfolio thể hiện toàn bộ dự án môn Kỹ năng số – minh bạch, trung thực và ứng dụng AI có trách nhiệm.</p>
+    </div>
+</footer>
+
+<!-- MODAL DỰ ÁN CHI TIẾT (nội dung các file thực tế) -->
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modal-project-detail">
+            <!-- nội dung động -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Mỗi dự án chứa nội dung mô phỏng chính xác từ tài liệu thật
+    const projectDetails = {
+        project1: {
+            title: "📁 Dự án: Quản lý tệp và thư mục trên Windows",
+            content: `<h3>📌 Mục tiêu</h3>
+                      <p>Thực hành toàn bộ thao tác với File Explorer: tạo thư mục, copy, cut, rename, xóa tạm thời & vĩnh viễn, khôi phục từ Recycle Bin.</p>
+                      <h3>🛠 Quy trình thực hiện</h3>
+                      <ul>
+                        <li>Tạo thư mục <code></code> trên ổ D:</li>
+                        <li>Tạo tệp GhiChu.txt → đổi tên thành GhiChuQuanTrong.txt</li>
+                        <li>Tạo thư mục con TaiLieu, sao chép tệp vào đó (Ctrl+C / Ctrl+V).</li>
+                        <li>Di chuyển tệp Dichuyen.txt bằng Cut/Paste, xóa Shift+Delete để xóa vĩnh viễn.</li>
+                        <li>Khôi phục tệp từ Recycle Bin → minh chứng đầy đủ.</li>
+                      </ul>
+                      <div class="file-meta"><i class="fas fa-camera"></i> Ảnh chụp màn hình các bước (đính kèm trong báo cáo gốc) thể hiện cấu trúc thư mục logic và quy tắc đặt tên nhất quán.</div>
+                      <p><strong>Kết quả:</strong> Nắm vững quản lý tệp, sẵn sàng cho các dự án lập trình phức tạp hơn.</p>`
+        },
+        project2: {
+            title: "🤖 Dự án: Khai thác dữ liệu & Đánh giá nguồn tin Robot công nghiệp",
+            content: `<h3>🔍 Chiến lược tìm kiếm nâng cao</h3>
+                      <p>Sử dụng các toán tử: <code>site:ieee.org "industrial robotics" filetype:pdf</code>, <code>intitle:"robotics and automation" after:2022</code>. Tổng hợp từ Google Scholar, Springer, MIT.</p>
+                      <h3>📊 Đánh giá độ tin cậy</h3>
+                      <p>Bảng so sánh tác giả: Siciliano (Springer, trích dẫn cao), Levine (JMLR, thực nghiệm AI), Kragic (IEEE). Kết luận: nguồn IEEE và Springer có uy tín cao nhất.</p>
+                      <div class="file-meta">✅ Bài báo cáo có trích dẫn chuẩn IEEE, minh họa cách lọc tài liệu khoa học.</div>`
+        },
+        project3: {
+            title: "🔋 Dự án: Ứng dụng Graphene trong pin Lithium-ion",
+            content: `<h3>📄 Tổng quan 5 bài báo (Nature, ScienceDirect, Wiley)</h3>
+                      <p><strong>Số liệu chính:</strong> Dung lượng lý thuyết graphene anode ~744 mAh/g (gấp đôi graphite). Cấu trúc 3D graphene + LIG giữ 91,09% dung lượng sau 300 chu kỳ. Nhiệt độ thermal runaway tăng lên 180-220°C, an toàn cho xe điện.</p>
+                      <p><strong>Kết luận:</strong> Graphene cải thiện mật độ năng lượng, tốc độ sạc và vòng đời pin. Xu hướng Li-S kết hợp graphene hứa hẹn 600-800 Wh/kg.</p>
+                      <div class="file-meta">🔬 So sánh phương pháp CVD, exfoliation, doctor-blade coating – dẫn chứng từ Elicit/Consensus.</div>`
+        },
+        project4: {
+            title: "🤝 Dự án: Smart Bin – Hợp tác nhóm và quản lý dự án",
+            content: `<h3>🎯 Mô tả dự án</h3>
+                      <p>Thùng rác thông minh sử dụng ESP32-S3, cảm biến siêu âm HC-SR04, servo và module nhận dạng giọng nói. Tự động mở nắp khi phát hiện người hoặc ra lệnh bằng giọng nói.</p>
+                      <h3>📌 Công cụ hợp tác</h3>
+                      <ul><li><strong>Trello:</strong> phân công nhiệm vụ, deadline 1/5/2026, cập nhật hàng tuần.</li>
+                      <li><strong>Google Docs:</strong> soạn báo cáo chung.</li>
+                      <li><strong>Messenger:</strong> trao đổi lỗi kỹ thuật (10+ lần).</li>
+                      <li><strong>Google Drive:</strong> lưu code và sơ đồ linh kiện.</li></ul>
+                      <p><strong>Vai trò cá nhân:</strong> lập trình Arduino/ESP32, viết tài liệu hướng dẫn. Đã khắc phục lỗi đồng bộ cảm biến và servo sau nhiều lần thử nghiệm.</p>
+                      <div class="file-meta">🏆 Minh chứng: ảnh chụp Trello, nội dung Google Docs và tin nhắn nhóm.</div>`
+        },
+        project5: {
+            title: "🎨 Dự án: Sáng tạo nội dung với AI – Thuyết trình Tràng An",
+            content: `<h3>🖌️ Quy trình sản xuất</h3>
+                      <p><strong>Claude (AI):</strong> viết nội dung 11 slide, cấu trúc logic về Quần thể danh thắng Tràng An – Di sản hỗn hợp đầu tiên của Việt Nam (UNESCO 2014).</p>
+                      <p><strong>DALL-E 3:</strong> tạo ảnh phong cảnh karst, sông ngòi, thuyền truyền thống với phong cách siêu thực.</p>
+                      <p><strong>Canva AI:</strong> Magic Design & Background Remover giúp layout chuyên nghiệp, tiết kiệm 60% thời gian.</p>
+                      <h3>✨ Prompt nâng cao tiêu biểu</h3>
+                      <p><em>"Đóng vai giảng viên đại học, tạo bài thuyết trình 10 slide về Tràng An, mỗi slide 3-4 bullet ngắn, kèm hình ảnh 16:9, giọng sinh động."</em></p>
+                      <div class="file-meta">⚠️ Lưu ý: kiểm tra tính chính xác văn hóa, tránh hallucination của AI.</div>`
+        },
+        project6: {
+            title: "⚖️ Dự án: AI có trách nhiệm & Liêm chính học thuật",
+            content: `<h3>🏛️ Phân tích chính sách AI của ĐHBK Hà Nội</h3>
+                      <p>Tháng 4/2026, HUST công bố 5 định hướng lớn: đổi mới chương trình, kiểm tra đánh giá năng lực thực chất, xây dựng hệ sinh thái AI, giữ vững giá trị đạo đức. Viện AI4LIFE được thành lập năm 2024.</p>
+                      <h3>📌 Bộ 7 nguyên tắc cá nhân</h3>
+                      <ul><li><strong>Minh bạch:</strong> khai báo AI trong mọi bài nộp.</li>
+                      <li><strong>Tư duy phê phán:</strong> không chấp nhận output mà không kiểm chứng.</li>
+                      <li><strong>Học hỏi thực sự:</strong> AI là gia sư, không làm thay.</li>
+                      <li><strong>Tôn trọng sở hữu trí tuệ:</strong> diễn đạt lại bằng ngôn ngữ riêng.</li>
+                      <li><strong>Trách nhiệm cá nhân:</strong> chịu trách nhiệm nội dung cuối cùng.</li>
+                      <li><strong>Phát triển kỹ năng:</strong> ưu tiên rèn luyện tư duy.</li>
+                      <li><strong>Sử dụng có mục đích:</strong> phù hợp chính sách môn học.</li></ul>
+                      <div class="file-meta">📊 Infographic kèm theo: ranh giới hỗ trợ hợp lý và gian lận học thuật.</div>`
+        }
+    };
+
+    const modal = document.getElementById('projectModal');
+    const modalDetail = document.getElementById('modal-project-detail');
+    const closeSpan = document.querySelector('.close-modal');
+
+    document.querySelectorAll('.view-project').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const projectKey = btn.getAttribute('data-project');
+            if (projectDetails[projectKey]) {
+                modalDetail.innerHTML = `<h2 style="margin-bottom: 16px; color:#1a4d5f;">${projectDetails[projectKey].title}</h2>${projectDetails[projectKey].content}<div style="margin-top: 28px;"><button class="btn-project" id="closeModalBtn">Đóng</button></div>`;
+                modal.style.display = 'flex';
+                const closeBtn = document.getElementById('closeModalBtn');
+                if (closeBtn) closeBtn.onclick = () => modal.style.display = 'none';
+            } else {
+                modalDetail.innerHTML = `<p>Đang cập nhật nội dung chi tiết. Vui lòng xem báo cáo đã nộp.</p><button class="btn-project" id="closeModalBtn">Đóng</button>`;
+                modal.style.display = 'flex';
+                document.getElementById('closeModalBtn').onclick = () => modal.style.display = 'none';
+            }
+        });
+    });
+
+    closeSpan.onclick = () => modal.style.display = 'none';
+    window.onclick = (event) => { if (event.target === modal) modal.style.display = 'none'; };
+
+    // tab logic
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = {
+        intro: document.getElementById('intro-section'),
+        projects: document.getElementById('projects-section'),
+        summary: document.getElementById('summary-section')
+    };
+
+    function showPage(pageId) {
+        Object.keys(sections).forEach(id => sections[id].style.display = 'none');
+        sections[pageId].style.display = 'block';
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+        if (activeLink) activeLink.classList.add('active');
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage(link.getAttribute('data-page'));
+        });
+    });
+    showPage('intro');
+</script>
+</body>
+</html>
