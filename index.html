@@ -81,7 +81,6 @@
             color: var(--accent);
         }
 
-        /* Hero section mới - thiết kế đẹp mắt */
         .hero {
             background: linear-gradient(135deg, #f5f3f0 0%, #ffffff 50%, #faf8f6 100%);
             padding: 70px 0 80px;
@@ -127,7 +126,6 @@
             align-items: center;
         }
         
-        /* Badge mới */
         .badge {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
             color: var(--primary);
@@ -162,7 +160,6 @@
             padding-left: 20px;
         }
 
-        /* Grid giới thiệu 2 cột */
         .intro-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -226,7 +223,6 @@
             border-top: 1px dashed var(--border);
         }
 
-        /* Avatar styling mới */
         .avatar-wrapper {
             text-align: center;
         }
@@ -339,42 +335,37 @@
             border-left: 4px solid var(--accent);
             line-height: 1.45;
         }
-        .pdf-placeholder {
-            background: #f9f7f5;
-            border: 1px dashed #cbc8c4;
-            border-radius: 14px;
-            padding: 16px;
+
+        /* ===== NÚT XEM FILE - ĐƠN GIẢN, ĐẸP ===== */
+        .file-button {
+            margin: 16px 0 8px;
             text-align: center;
-            color: #7e7e8a;
-            margin: 16px 0 12px;
         }
-        .pdf-placeholder i {
-            font-size: 1.8rem;
-            color: var(--accent-dark);
-            margin-bottom: 8px;
-            display: block;
-        }
-        .btn-pdf {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--primary-light);
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
             text-decoration: none;
-            transition: 0.2s;
-            margin-top: 8px;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(10,43,62,0.2);
         }
-        .btn-pdf:hover {
-            background: var(--accent-dark);
+        .btn-view i {
+            font-size: 1rem;
         }
-        .file-note {
-            font-size: 0.7rem;
-            color: #999;
-            margin-top: 10px;
+        .btn-view:hover {
+            background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(200,168,78,0.3);
         }
 
         .reliability-table {
@@ -511,7 +502,7 @@
     </div>
 </header>
 
-<!-- GIỚI THIỆU - BỐ CỤC MỚI ĐẸP MẮT -->
+<!-- GIỚI THIỆU -->
 <section class="hero" id="gioi-thieu">
     <div class="container hero-content">
         <div class="hero-left">
@@ -525,36 +516,30 @@
                 Kết nối pháp luật & công nghệ - Kiến tạo giá trị bền vững
             </div>
             
-            <!-- Grid 2 cột -->
             <div class="intro-grid">
-                <!-- Card 1: Giới thiệu -->
                 <div class="info-card">
                     <h3><i class="fas fa-user-astronaut"></i> Về tôi</h3>
                     <p>Sinh viên năm thứ 3 ngành <strong>Luật Kinh tế</strong> – ĐH Kinh tế - Luật (ĐHQG TP.HCM). Đam mê khám phá <strong>giao thoa giữa pháp luật và công nghệ</strong>, đặc biệt các vấn đề về AI, giao dịch điện tử và bảo vệ dữ liệu cá nhân.</p>
                     <div class="sub-text"><i class="fas fa-map-marker-alt"></i> TP. Hồ Chí Minh | <i class="fas fa-calendar-alt"></i> Khóa 2023-2027</div>
                 </div>
                 
-                <!-- Card 2: Sở thích -->
                 <div class="info-card">
                     <h3><i class="fas fa-heart"></i> Sở thích</h3>
                     <p>📖 Đọc án lệ & phân tích hợp đồng · 🤖 AI trong nghiên cứu luật · ✍️ Viết về luật công nghệ · 🎧 Podcast chuyển đổi số ngành luật · 🧩 Giải quyết tình huống pháp lý phức tạp.</p>
                 </div>
                 
-                <!-- Card 3: Mục tiêu học tập -->
                 <div class="info-card">
                     <h3><i class="fas fa-bullseye"></i> Mục tiêu học tập</h3>
                     <p><strong>🎯 Ngắn hạn:</strong> Hoàn thiện kỹ năng số (quản lý tệp, tìm kiếm học thuật, AI, hợp tác trực tuyến).<br>
                     <strong>🚀 Dài hạn:</strong> Trở thành <strong>luật sư công nghệ</strong>, tư vấn doanh nghiệp về tuân thủ pháp lý và bảo vệ dữ liệu.</p>
                 </div>
                 
-                <!-- Card 4: Định hướng -->
                 <div class="info-card">
                     <h3><i class="fas fa-road"></i> Định hướng phát triển</h3>
                     <p>🔹 Học luật công nghệ & an ninh mạng.<br>🔹 Thực tập tại công ty luật có mảng công nghệ.<br>🔹 Xây dựng mạng lưới chuyên gia pháp lý số.<br>🔹 Nâng cao ngoại ngữ đọc tài liệu quốc tế.</p>
                 </div>
             </div>
             
-            <!-- Card đặc biệt cho mục tiêu Portfolio (chiếm full width) -->
             <div class="info-card" style="margin-top: 8px; grid-column: 1/-1;">
                 <h3><i class="fas fa-folder-open"></i> Mục tiêu Portfolio</h3>
                 <p>🎯 <strong>Thể hiện</strong> kỹ năng số có hệ thống & chuyên nghiệp · 🎯 <strong>Lưu trữ</strong> sản phẩm cá nhân dễ chia sẻ · 🎯 <strong>Minh chứng</strong> năng lực số sinh viên Luật 4.0 · 🎯 <strong>Đạt chuẩn Mức 4</strong> – Sáng tạo, khoa học, phân tích sâu sắc.</p>
@@ -581,29 +566,30 @@
         <h2 class="section-title">📁 Các dự án</h2>
         <div class="projects-grid">
             
+            <!-- Bài 1 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>📂 Bài 1: Quản lý tệp & thư mục</h3>
                     <p>Máy tính và thiết bị ngoại vi</p>
                 </div>
                 <div class="card-body">
-                    <div class="summary"><strong>Tóm tắt:</strong> Thiết lập cây thư mục khoa học, quy tắc đặt tên tệp nhất quán (ThucHanh_HoTen → thư mục con TaiLieu), thực hành copy/cut/paste/xóa an toàn.</div>
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i>
-                        <strong>Bài tập 1 (PDF)</strong>
-                        <div class="file-note">⬇️ Nhấp để tải / xem file</div>
-                        <a href="bai-tap-1.pdf" class="btn-pdf" style="pointer-events: none;"></a>
+                    <div class="summary"><strong>Tóm tắt:</strong> Thiết lập cây thư mục khoa học, quy tắc đặt tên tệp nhất quán, thực hành copy/cut/paste/xóa an toàn.</div>
+                    <div class="file-button">
+                        <a href="bai-tap-1.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Xem file
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- Bài 2 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>🔍 Bài 2: Khai thác dữ liệu & thông tin</h3>
                     <p>Tìm kiếm học thuật + đánh giá nguồn</p>
                 </div>
                 <div class="card-body">
-                    <div class="summary"><strong>Tóm tắt:</strong> Sử dụng toán tử nâng cao (site:, filetype:, intitle:) để tìm tài liệu về "hợp đồng thành lập công ty". Xây dựng bảng đánh giá độ tin cậy của 10 nguồn theo 5 tiêu chí.</div>
+                    <div class="summary"><strong>Tóm tắt:</strong> Sử dụng toán tử nâng cao (site:, filetype:, intitle:) tìm tài liệu "hợp đồng thành lập công ty". Xây dựng bảng đánh giá độ tin cậy.</div>
                     <div class="reliability-table">
                         <table style="font-size:0.7rem">
                             <tr><th>Nguồn</th><th>CQXB</th><th>Trích dẫn</th></tr>
@@ -612,65 +598,74 @@
                             <tr><td>Sách chuyên khảo</td><td class="rating-high">Cao</td><td class="rating-high">Cao</td></tr>
                         </table>
                     </div>
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i> Bảng đánh giá đầy đủ + ảnh chụp tìm kiếm
-                        <a href="#" class="btn-pdf" style="pointer-events: none;">📎 Chờ bổ sung PDF</a>
+                    <div class="file-button">
+                        <a href="files/bai2_tim_kiem_danh_gia.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Xem file
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- Bài 3 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>🤖 Bài 3: Tổng quan về trí tuệ nhân tạo</h3>
                     <p>Viết Prompt hiệu quả cho học tập</p>
                 </div>
                 <div class="card-body">
-                    <div class="summary"><strong>Tóm tắt:</strong> So sánh prompt cơ bản và prompt cải tiến (gán vai trò, bối cảnh luật doanh nghiệp, yêu cầu trích dẫn). Kết quả AI chuyên sâu, có cấu trúc điều luật rõ ràng.</div>
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i> Báo cáo so sánh + ảnh chụp màn hình
-                        <a href="#" class="btn-pdf" style="pointer-events: none;">📎 Chờ bổ sung PDF</a>
+                    <div class="summary"><strong>Tóm tắt:</strong> So sánh prompt cơ bản và cải tiến (gán vai trò, bối cảnh luật doanh nghiệp, yêu cầu trích dẫn).</div>
+                    <div class="file-button">
+                        <a href="files/bai3_prompt_engineering.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Xem file
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- Bài 4 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>👥 Bài 4: Giao tiếp & hợp tác trong môi trường số</h3>
                     <p>Công cụ quản lý dự án nhóm</p>
                 </div>
                 <div class="card-body">
-                    <div class="summary"><strong>Tóm tắt:</strong> Sử dụng Trello để lập kế hoạch, phân công nhiệm vụ cho nhóm nghiên cứu "Pháp luật về AI". Tích hợp checklist, hạn chót, bình luận và file đính kèm.</div>
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i> Minh chứng bảng Trello + quy trình làm việc
-                        <a href="#" class="btn-pdf" style="pointer-events: none;">📎 Chờ bổ sung PDF</a>
+                    <div class="summary"><strong>Tóm tắt:</strong> Sử dụng Trello lập kế hoạch, phân công nhiệm vụ cho nhóm nghiên cứu "Pháp luật về AI".</div>
+                    <div class="file-button">
+                        <a href="files/bai4_hop_tac_truc_tuyen.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Xem file
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- Bài 5 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>🎨 Bài 5: Sáng tạo nội dung số</h3>
                     <p>AI hỗ trợ thiết kế infographic</p>
                 </div>
                 <div class="card-body">
-                    <div class="summary"><strong>Tóm tắt:</strong> Dùng Canva AI + ChatGPT tạo infographic "Các loại hình công ty tại Việt Nam" (TNHH, Cổ phần, Hợp danh). Trình bày quy trình từ prompt đến chỉnh sửa.</div>
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i> Sản phẩm infographic + mô tả quy trình
-                        <a href="#" class="btn-pdf" style="pointer-events: none;">📎 Chờ bổ sung PDF</a>
+                    <div class="summary"><strong>Tóm tắt:</strong> Dùng Canva AI + ChatGPT tạo infographic "Các loại hình công ty tại Việt Nam".</div>
+                    <div class="file-button">
+                        <a href="files/bai5_sang_tao_noi_dung_AI.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Xem file
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <!-- Bài 6 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>⚖️ Bài 6: An toàn & liêm chính học thuật</h3>
                     <p>Sử dụng AI có trách nhiệm</p>
                 </div>
                 <div class="card-body">
-                    <div class="summary"><strong>Tóm tắt:</strong> Xây dựng bộ 7 nguyên tắc sử dụng AI trong nghiên cứu luật (kiểm tra trích dẫn, minh bạch, phản biện hallucination). Liên hệ chính sách đạo đức AI quốc tế.</div>
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i> Bộ nguyên tắc chi tiết + phân tích
-                        <a href="#" class="btn-pdf" style="pointer-events: none;">📎 Chờ bổ sung PDF</a>
+                    <div class="summary"><strong>Tóm tắt:</strong> Xây dựng bộ 7 nguyên tắc sử dụng AI trong nghiên cứu luật, liên hệ chính sách đạo đức AI quốc tế.</div>
+                    <div class="file-button">
+                        <a href="files/bai6_AI_co_trach_nhiem.pdf" class="btn-view" target="_blank">
+                            <i class="fas fa-file-pdf"></i> Xem file
+                        </a>
                     </div>
                 </div>
             </div>
