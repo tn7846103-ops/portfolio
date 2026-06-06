@@ -336,7 +336,6 @@
             line-height: 1.45;
         }
 
-        /* ===== NÚT XEM FILE - ĐƠN GIẢN, ĐẸP ===== */
         .file-button {
             margin: 16px 0 8px;
             text-align: center;
@@ -366,6 +365,69 @@
             background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(200,168,78,0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: 30px auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1000px;
+            height: 85%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            background: var(--primary);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .close-modal:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        .pdf-iframe {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
         }
 
         .reliability-table {
@@ -466,6 +528,11 @@
             .avatar-ring i {
                 font-size: 4.5rem;
             }
+            .modal-content {
+                width: 95%;
+                margin: 20px auto;
+                height: 90%;
+            }
         }
         @media (max-width: 700px) {
             .container {
@@ -560,13 +627,13 @@
     </div>
 </section>
 
-<!-- DỰ ÁN -->
+<!-- DỰ ÁN - TẤT CẢ ĐỀU XEM PDF -->
 <section id="du-an">
     <div class="container">
         <h2 class="section-title">📁 Các dự án</h2>
         <div class="projects-grid">
             
-            <!-- Bài 1 -->
+            <!-- Bài 1 - Xem PDF -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>📂 Bài 1: Quản lý tệp & thư mục</h3>
@@ -575,9 +642,9 @@
                 <div class="card-body">
                     <div class="summary"><strong>Tóm tắt:</strong> Thiết lập cây thư mục khoa học, quy tắc đặt tên tệp nhất quán, thực hành copy/cut/paste/xóa an toàn.</div>
                     <div class="file-button">
-                        <a href="bai-tap-1.pdf" class="btn-view" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Xem file
-                        </a>
+                        <button class="btn-view" onclick="openPDF('files/bai1_quan_ly_tep.pdf', 'Bài 1: Quản lý tệp & thư mục')">
+                            <i class="fas fa-file-pdf"></i> Xem file PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -599,9 +666,9 @@
                         </table>
                     </div>
                     <div class="file-button">
-                        <a href="files/bai2_tim_kiem_danh_gia.pdf" class="btn-view" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Xem file
-                        </a>
+                        <button class="btn-view" onclick="openPDF('files/bai2_tim_kiem_danh_gia.pdf', 'Bài 2: Khai thác dữ liệu & thông tin')">
+                            <i class="fas fa-file-pdf"></i> Xem file PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -615,9 +682,9 @@
                 <div class="card-body">
                     <div class="summary"><strong>Tóm tắt:</strong> So sánh prompt cơ bản và cải tiến (gán vai trò, bối cảnh luật doanh nghiệp, yêu cầu trích dẫn).</div>
                     <div class="file-button">
-                        <a href="files/bai3_prompt_engineering.pdf" class="btn-view" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Xem file
-                        </a>
+                        <button class="btn-view" onclick="openPDF('files/bai3_prompt_engineering.pdf', 'Bài 3: Prompt Engineering')">
+                            <i class="fas fa-file-pdf"></i> Xem file PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -631,9 +698,9 @@
                 <div class="card-body">
                     <div class="summary"><strong>Tóm tắt:</strong> Sử dụng Trello lập kế hoạch, phân công nhiệm vụ cho nhóm nghiên cứu "Pháp luật về AI".</div>
                     <div class="file-button">
-                        <a href="files/bai4_hop_tac_truc_tuyen.pdf" class="btn-view" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Xem file
-                        </a>
+                        <button class="btn-view" onclick="openPDF('files/bai4_hop_tac_truc_tuyen.pdf', 'Bài 4: Giao tiếp & hợp tác trực tuyến')">
+                            <i class="fas fa-file-pdf"></i> Xem file PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -647,9 +714,9 @@
                 <div class="card-body">
                     <div class="summary"><strong>Tóm tắt:</strong> Dùng Canva AI + ChatGPT tạo infographic "Các loại hình công ty tại Việt Nam".</div>
                     <div class="file-button">
-                        <a href="files/bai5_sang_tao_noi_dung_AI.pdf" class="btn-view" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Xem file
-                        </a>
+                        <button class="btn-view" onclick="openPDF('files/bai5_sang_tao_noi_dung_AI.pdf', 'Bài 5: Sáng tạo nội dung với AI')">
+                            <i class="fas fa-file-pdf"></i> Xem file PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -663,15 +730,64 @@
                 <div class="card-body">
                     <div class="summary"><strong>Tóm tắt:</strong> Xây dựng bộ 7 nguyên tắc sử dụng AI trong nghiên cứu luật, liên hệ chính sách đạo đức AI quốc tế.</div>
                     <div class="file-button">
-                        <a href="files/bai6_AI_co_trach_nhiem.pdf" class="btn-view" target="_blank">
-                            <i class="fas fa-file-pdf"></i> Xem file
-                        </a>
+                        <button class="btn-view" onclick="openPDF('files/bai6_AI_co_trach_nhiem.pdf', 'Bài 6: AI có trách nhiệm')">
+                            <i class="fas fa-file-pdf"></i> Xem file PDF
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- MODAL XEM PDF -->
+<div id="pdfModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Xem file PDF</h3>
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+        </div>
+        <iframe id="pdfIframe" class="pdf-iframe" src=""></iframe>
+    </div>
+</div>
+
+<script>
+    function openPDF(filePath, title) {
+        const modal = document.getElementById('pdfModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const pdfIframe = document.getElementById('pdfIframe');
+        
+        modalTitle.innerHTML = '<i class="fas fa-file-pdf"></i> ' + title;
+        pdfIframe.src = filePath;
+        
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('pdfModal');
+        const pdfIframe = document.getElementById('pdfIframe');
+        
+        modal.style.display = 'none';
+        pdfIframe.src = ''; // reset để dừng tải PDF
+        document.body.style.overflow = 'auto';
+    }
+
+    // Đóng modal khi nhấp ra ngoài
+    window.onclick = function(event) {
+        const modal = document.getElementById('pdfModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    // Đóng modal bằng phím ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
 
 <!-- TỔNG KẾT -->
 <section id="tong-ket">
@@ -681,7 +797,7 @@
         <div class="reflection-container">
             <div class="reflection-section">
                 <h3><i class="fas fa-feather-alt"></i> Hành trình xây dựng Portfolio</h3>
-                <p>Khi bắt đầu dự án này, tôi nghĩ đơn giản rằng portfolio chỉ là nơi "gom" các bài tập lại. Nhưng càng thực hiện, tôi càng nhận ra đó là một <strong>quá trình tự vấn và định vị bản thân</strong>. Là sinh viên Luật, tôi vốn quen với tư duy tuyến tính, logic chặt chẽ dựa trên điều khoản. Việc chuyển sang tư duy thiết kế trải nghiệm (UX) – đặt người xem làm trung tâm – là một cú "xoay não" thú vị.</p>
+                <p>Khi bắt đầu dự án này, tôi nghĩ đơn giản rằng portfolio chỉ là nơi "gom" các bài tập lại. Nhưng càng thực hiện, tôi càng nhận ra đó là một <strong>quá trình tự vấn và định vị bản thân</strong>.</p>
             </div>
 
             <div class="reflection-section">
