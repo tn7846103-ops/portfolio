@@ -375,7 +375,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
             animation: fadeIn 0.3s ease;
         }
         @keyframes fadeIn {
@@ -385,30 +385,30 @@
         .modal-content {
             position: relative;
             background-color: #fefefe;
-            margin: 30px auto;
+            margin: 20px auto;
             padding: 0;
             width: 90%;
-            max-width: 1000px;
-            height: 85%;
-            border-radius: 20px;
+            max-width: 1100px;
+            height: 90%;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
             animation: slideIn 0.3s ease;
         }
         @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
+            from { transform: translateY(-30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
         .modal-header {
             background: var(--primary);
-            padding: 16px 20px;
+            padding: 14px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             color: white;
         }
         .modal-header h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
         }
         .close-modal {
@@ -426,7 +426,7 @@
         }
         .pdf-iframe {
             width: 100%;
-            height: calc(100% - 60px);
+            height: calc(100% - 52px);
             border: none;
         }
 
@@ -530,8 +530,8 @@
             }
             .modal-content {
                 width: 95%;
-                margin: 20px auto;
-                height: 90%;
+                margin: 15px auto;
+                height: 92%;
             }
         }
         @media (max-width: 700px) {
@@ -608,7 +608,7 @@
             </div>
             
             <div class="info-card" style="margin-top: 8px; grid-column: 1/-1;">
-                <h3><i class="fas fa-folder-open"></i> Mục tiêu Portfolio</h3>
+                <h3><i class="fas-fa-folder-open"></i> Mục tiêu Portfolio</h3>
                 <p>🎯 <strong>Thể hiện</strong> kỹ năng số có hệ thống & chuyên nghiệp · 🎯 <strong>Lưu trữ</strong> sản phẩm cá nhân dễ chia sẻ · 🎯 <strong>Minh chứng</strong> năng lực số sinh viên Luật 4.0 · 🎯 <strong>Đạt chuẩn Mức 4</strong> – Sáng tạo, khoa học, phân tích sâu sắc.</p>
             </div>
         </div>
@@ -627,13 +627,13 @@
     </div>
 </section>
 
-<!-- DỰ ÁN - TẤT CẢ ĐỀU XEM PDF -->
+<!-- DỰ ÁN -->
 <section id="du-an">
     <div class="container">
         <h2 class="section-title">📁 Các dự án</h2>
         <div class="projects-grid">
             
-            <!-- Bài 1 - Xem PDF -->
+            <!-- Bài 1 -->
             <div class="project-card">
                 <div class="card-header">
                     <h3>📂 Bài 1: Quản lý tệp & thư mục</h3>
@@ -740,7 +740,7 @@
     </div>
 </section>
 
-<!-- MODAL XEM PDF -->
+<!-- MODAL XEM PDF - KHÔNG CÓ THANH BÊN TRÁI -->
 <div id="pdfModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -758,7 +758,8 @@
         const pdfIframe = document.getElementById('pdfIframe');
         
         modalTitle.innerHTML = '<i class="fas fa-file-pdf"></i> ' + title;
-        pdfIframe.src = filePath;
+        // Thêm tham số để ẩn thanh bên trái, toolbar, thanh cuộn
+        pdfIframe.src = filePath + '#toolbar=0&navpanes=0&scrollbar=0';
         
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -797,7 +798,7 @@
         <div class="reflection-container">
             <div class="reflection-section">
                 <h3><i class="fas fa-feather-alt"></i> Hành trình xây dựng Portfolio</h3>
-                <p>Khi bắt đầu dự án này, tôi nghĩ đơn giản rằng portfolio chỉ là nơi "gom" các bài tập lại. Nhưng càng thực hiện, tôi càng nhận ra đó là một <strong>quá trình tự vấn và định vị bản thân</strong>.</p>
+                <p>Khi bắt đầu dự án này, tôi nghĩ đơn giản rằng portfolio chỉ là nơi "gom" các bài tập lại. Nhưng càng thực hiện, tôi càng nhận ra đó là một <strong>quá trình tự vấn và định vị bản thân</strong>. Là sinh viên Luật, tôi vốn quen với tư duy tuyến tính, logic chặt chẽ dựa trên điều khoản. Việc chuyển sang tư duy thiết kế trải nghiệm (UX) – đặt người xem làm trung tâm – là một cú "xoay não" thú vị.</p>
             </div>
 
             <div class="reflection-section">
